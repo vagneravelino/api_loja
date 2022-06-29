@@ -21,18 +21,18 @@ function log($modulo, $mensagem, $relatorio, $usuario, $nivel = LogEnum::INFO, $
 
     //TODO: Refazer Lógica utilizando Repositories.
 
-    try {
-        DB::beginTransaction();
+    // try {
+    //     DB::beginTransaction();
 
-        $log->fill($data);
-        $log->save();
+    //     $log->fill($data);
+    //     $log->save();
 
-        DB::commit();
-        return $log->id;
-    } catch (\Exception $e) {
-        DB::rollBack();
-        $data = Carbon::now();
+    //     DB::commit();
+    //     return $log->id;
+    // } catch (\Exception $e) {
+    //     DB::rollBack();
+    //     $data = Carbon::now();
 
-        \Illuminate\Support\Facades\Log::channel('syslog')->error("[{$data}] - Erro ao grava no banco de dados. [{$e->getCode()} - {$e->getMessage()}]");
-    }
+    //     \Illuminate\Support\Facades\Log::channel('syslog')->error("[{$data}] - Erro ao grava no banco de dados. [{$e->getCode()} - {$e->getMessage()}]");
+    // }
 }

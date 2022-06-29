@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Implements;
+namespace App\Repositories\Implementation;
 
 use App\Repositories\Core\BaseEloquentRepository;
 

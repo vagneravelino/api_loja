@@ -7,7 +7,7 @@ use App\Enums\LogEnum;
 //     //
 // }
 
-function error($message, $http_code, $data, $exception)
+function error($message, $http_code, $data = null, $exception = null)
 {
     $usuario = '';
     $class = '';
@@ -21,13 +21,13 @@ function error($message, $http_code, $data, $exception)
 
     $log_code = $exception ? $exception->getCode() : null;
 
-    $log_id = log($class_name, $log_mensage, $relatorio, $usuario, LogEnum::ERROR, $http_code, $log_code);
+    // $log_id = log($class_name, $log_mensage, $relatorio, $usuario, LogEnum::ERROR, $http_code, $log_code);
 
     return response()->json([
         'status' => 'Error',
         'message' => $message,
         'data' => null,
-        'log_id' => $log_id
+        // 'log_id' => $log_id
     ], $http_code);
 }
 
@@ -57,13 +57,13 @@ function success($message, $http_code = 200, $data = null)
 
     $relatorio = null;
 
-    $log_id = log($class_name, $message, $relatorio, $usuario, LogEnum::SUCCESS, $http_code);
+    // $log_id = log($class_name, $message, $relatorio, $usuario, LogEnum::SUCCESS, $http_code);
 
     return response()->json([
         'status' => 'Sucesso',
         'message' => $message,
         'data' => $data,
-        'log_id' => $log_id
+        // 'log_id' => $log_id
     ], $http_code);
 }
 
