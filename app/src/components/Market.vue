@@ -7,7 +7,7 @@
       </p>
       <p>
       Desenvolvido por:
-      <a href="https://github.com/vagneravelino" target="_blank" rel="noopener">Vagner Aveino</a>.
+      <a href="https://github.com/vagneravelino" target="_blank" rel="noopener">Vagner Avelino</a>.
     </p>
   </div>
 </template>
