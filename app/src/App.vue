@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <MarketPlace msg="Sistema para Cadastro de Produtos"/>
+  <MarketPlace msg="Sistema para Cadastro de Eletrodomésticos."/>
 </template>
 
 <script>

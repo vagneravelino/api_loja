@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/', function() {
     return json_encode([
-        "Api" => "Cadastro de Produtos para Loja Vistual",
-        "Versão" => '0.0.1',
+        "Api" => config('app.name'),
+        "Versão" => env('APP_VERSION'),
         "Desenvolvido por" => "Vagner Avelino"
     ]);
 })->name('api.root');

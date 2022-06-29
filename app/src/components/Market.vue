@@ -2,7 +2,7 @@
   <div class="market">
       <h1>{{ msg }}</h1>
       <p>
-          Projeto para cadastro de produtos para loja virtual.<br>
+          Projeto para cadastro de eletrodomésticos.<br>
           Esta aplicação consumirá recursos de uma API Rest.
       </p>
       <p>
