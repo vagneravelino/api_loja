@@ -1,0 +1,82 @@
+version: '3'
+
+# Redes Docker
+networks:
+    network-loja:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.43.0/29
+  
+services:
+    db-loja:
+        build:
+            context: ./db
+            dockerfile: Dockerfile
+            args:
+              buildno: 1
+        tty: true
+        container_name: db-loja
+        volumes:
+            - ../db/data:/var/lib/mysql
+        environment: 
+            MYSQL_DATABASE: loja_db
+            MYSQL_ROOT: root
+            MYSQL_ROOT_PASSWORD: 1q2w3e4r
+            MYSQL_PASSWORD: 1q2w3e4r
+        networks:
+            network-loja:
+                ipv4_address: 10.0.43.2
+        ports:
+            - 3306:3306/tcp
+            - 33060:33060/tcp
+        restart:
+            unless-stopped
+    
+    api-loja:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+            args:
+              buildno: 1
+        container_name: api-loja
+        restart: unless-stopped
+        ports:
+            - 8000:80/tcp
+        tty: true
+        volumes:
+            - ../api:/var/www/html
+            - ./api/conf.d/app/apache2.conf:/etc/apache2/apache2.conf
+            - ./api/conf.d/app/000-default.conf:/etc/apache2/sites-available/000-default.conf
+            - ./api/conf.d/app/php.ini:/usr/local/etc/php/php.ini
+            - ./api/scripts:/home/www/scripts
+        networks: 
+            network-loja:
+                ipv4_address: 10.0.43.3
+        depends_on:
+            - db-loja
+        links:
+            - db-loja
+
+    web-loja:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+            args:
+              buildno: 1
+        container_name: web-loja
+        # user: node
+        restart: unless-stopped
+        working_dir: /var/www/html
+        ports:
+            - 80:8080/tcp
+        tty: true
+        volumes:
+            - ../app:/var/www/html
+        command: ["npm", "run", "serve"]
+        networks: 
+            network-loja:
+                ipv4_address: 10.0.43.4
+
+    
