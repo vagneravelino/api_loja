@@ -1,8 +1,9 @@
-APP_NAME='API de Cadastro de Loja'
+APP_NAME='API de Cadastro de Eletrodomésticos'
 APP_ENV=local
 APP_KEY=base64:69rb6BVdU6CbYnOURk67d3iwB/AS0WPhlNeJR5nldDw=
 APP_DEBUG=true
 APP_URL=http://localhost
+APP_VEERSION='0.0.1'
 
 LOG_CHANNEL=stack
 
