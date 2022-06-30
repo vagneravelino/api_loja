@@ -30,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUpdateUserRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateUserRequest $request)
@@ -56,20 +56,20 @@ class UserController extends Controller
             return error('Usuário não encontrado!', 200);
         }
 
-        return success('Usuário localizado!', 200, $user);
+        return success('Usuário encontrado!', 200, $user);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUpdateUserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreUpdateUserRequest $request, $id)
     {
         if (!$user = $this->_repository->findById($id)) {
-            return error('Usuário não localizado!', 200);
+            return error('Usuário não encontrado!', 200);
         }
 
         $user = $this->_repository->update($id, [
@@ -89,7 +89,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         if (!$user = $this->_repository->findById($id)) {
-            return error('Usuário não localizado!', 200);
+            return error('Usuário não encontrado!', 200);
         }
 
         $user->destroy($id);
