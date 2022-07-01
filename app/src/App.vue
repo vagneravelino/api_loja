@@ -1,26 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <MarketPlace msg="Sistema para Cadastro de Eletrodomésticos."/>
+  <div>
+    <topo />
+    <conteudo />
+    <rodape />
+  </div>
 </template>
 
 <script>
-import MarketPlace from './components/Market.vue'
+import Conteudo from '@/components/layouts/Conteudo.vue'
+import Rodape from '@/components/layouts/Rodape.vue'
+import Topo from '@/components/layouts/Topo.vue'
 
 export default {
   name: 'App',
   components: {
-    MarketPlace
+    Conteudo, Rodape, Topo
   }
 }
 </script>
-
+  
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  
 </style>
