@@ -30,14 +30,6 @@
             />
           </div>
         </div>
-        <div class="mb-3 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label"
-            >Senha</label
-          >
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Senha Forte" />
-          </div>
-        </div>
         <div class="row justify-content-between">
           <div class="col-sm-2">
             <button class="form-control btn btn-light"
