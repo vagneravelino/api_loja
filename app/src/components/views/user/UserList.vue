@@ -49,7 +49,7 @@
 
 <script>
 export default {
-  name: "UsuarioLista",
+  name: "UserList",
   data: () => ({
     data: null
   }),

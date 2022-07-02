@@ -1,20 +1,20 @@
 <template>
   <div>
-    <topo />
-    <conteudo />
-    <rodape />
+    <Header />
+    <Main />
+    <BaseBoard />
   </div>
 </template>
 
 <script>
-import Conteudo from '@/components/layouts/Conteudo.vue'
-import Rodape from '@/components/layouts/Rodape.vue'
-import Topo from '@/components/layouts/Topo.vue'
+import BaseBoard from '@/components/layouts/BaseBoard.vue'
+import Header from '@/components/layouts/Header.vue'
+import Main from '@/components/layouts/Main.vue'
 
 export default {
   name: 'App',
   components: {
-    Conteudo, Rodape, Topo
+    BaseBoard, Header, Main
   }
 }
 </script>

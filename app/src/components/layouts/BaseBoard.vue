@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "Rodape",
+  name: "BaseBoard",
 };
 </script>
 

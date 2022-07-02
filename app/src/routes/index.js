@@ -1,24 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Fornecedor from '@/components/views/Fornecedor.vue'
-import FornecedorCadastro from '@/components/views/FornecedorCadastro.vue'
-import FornecedorLista from '@/components/views/FornecedorLista.vue'
+import Supplier from '@/components/views/supplier/Supplier.vue'
+import SupplierList from '@/components/views/supplier/SupplierList.vue'
+import SupplierStore from '@/components/views/supplier/SupplierStore.vue'
 
-import Home from '@/components/views/Home.vue'
+import Home from '@/components/views/main/Home.vue'
 
-import Marca from '@/components/views/Marca.vue'
-import MarcaApagar from '@/components/views/MarcaApagar.vue'
-import MarcaCadastro from '@/components/views/MarcaCadastro.vue'
-import MarcaEditar from '@/components/views/MarcaEditar.vue'
-import MarcaLista from '@/components/views/MarcaLista.vue'
+import Brand from '@/components/views/brand/Brand.vue'
+import BrandDelete from '@/components/views/brand/BrandDelete.vue'
+import BrandStore from '@/components/views/brand/BrandStore.vue'
+import BrandUpdate from '@/components/views/brand/BrandUpdate.vue'
+import BrandList from '@/components/views/brand/BrandList.vue'
 
-import Produto from '@/components/views/Produto.vue'
-import ProdutoCadastro from '@/components/views/ProdutoCadastro.vue'
-import ProdutoLista from '@/components/views/ProdutoLista.vue'
+import Product from '@/components/views/product/Product.vue'
+import ProductStore from '@/components/views/product/ProductStore.vue'
+import ProductDetail from '@/components/views/product/ProductDetail.vue'
+import ProductList from '@/components/views/product/ProductList.vue'
 
-import Usuario from '@/components/views/Usuario.vue'
-import UsuarioCadastro from '@/components/views/UsuarioCadastro.vue'
-import UsuarioLista from '@/components/views/UsuarioLista.vue'
+import User from '@/components/views/user/User.vue'
+import UserStore from '@/components/views/user/UserStore.vue'
+import UserList from '@/components/views/user/UserList.vue'
 
 const routes = [
     {
@@ -27,41 +28,42 @@ const routes = [
         component: Home
     },
     {
-        path: '/fornecedor',
-        name: 'Fornecedor',
-        component: Fornecedor,
+        path: '/supplier',
+        name: 'Supplier',
+        component: Supplier,
         children: [
-            { path: '', name: 'FornecedorLista', component: FornecedorLista },
-            { path: 'cadastro', name: 'FornecedorCadastro', component: FornecedorCadastro },
+            { path: '', name: 'SupplierList', component: SupplierList },
+            { path: 'store', name: 'SupplierStore', component: SupplierStore },
         ]
     },
     {
-        path: '/marca',
-        name: 'Marca',
-        component: Marca,
+        path: '/brand',
+        name: 'Brand',
+        component: Brand,
         children: [
-            { path: '', name: 'MarcaLista', component: MarcaLista },
-            { path: 'cadastro', name: 'MarcaCadastro', component: MarcaCadastro },
-            { path: 'editar', name: 'MarcaEditar', component: MarcaEditar },
-            { path: 'deletar', name: 'MarcaApagar', component: MarcaApagar },
+            { path: '', name: 'BrandList', component: BrandList },
+            { path: 'store', name: 'BrandStore', component: BrandStore },
+            { path: 'update', name: 'BrandUpdate', component: BrandUpdate },
+            { path: 'delete', name: 'BrandDelete', component: BrandDelete },
         ]
     },
     {
-        path: '/produto',
-        name: 'Produto',
-        component: Produto,
+        path: '/product',
+        name: 'Product',
+        component: Product,
         children: [
-            { path: '', name: 'ProdutoLista', component: ProdutoLista },
-            { path: 'cadastro', name: 'ProdutoCadastro', component: ProdutoCadastro },
+            { path: '', name: 'ProductList', component: ProductList },
+            { path: ':id', name: 'ProductDetail', component: ProductDetail },
+            { path: 'store', name: 'ProductStore', component: ProductStore },
         ]
     },
     {
-        path: '/usuario',
-        name: 'Usuario',
-        component: Usuario,
+        path: '/user',
+        name: 'User',
+        component: User,
         children: [
-            { path: '', name: 'UsuarioLista', component: UsuarioLista },
-            { path: 'cadastro', name: 'Usuariocadastro', component: UsuarioCadastro },
+            { path: '', name: 'UserList', component: UserList },
+            { path: 'store', name: 'UserStore', component: UserStore },
         ]
     },
 ]

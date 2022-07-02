@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name: 'MarcaApagar'
+    name: 'BrandDelete'
 }
 </script>
 

@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "FornecedorLista",
+  name: "SupplierList",
   data: () => ({
     data: null
   }),

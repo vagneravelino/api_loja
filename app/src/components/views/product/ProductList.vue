@@ -25,16 +25,22 @@
           </thead>
           <tbody>
             <template v-if="data">
-              <tr v-for="p in data.data" :key="p.id">
+              <tr v-for="p in data" :key="p.id">
                 <td>{{ p.name }}</td>
                 <td>{{ p.brand_id }}</td>
                 <td>{{ p.supplier_id }}</td>
                 <td>{{ p.price }}</td>
                 <td>
+                  <button class="btn btn-sm btn-outline-warning me-2" 
+                    @click="this.$router.push(`/produto/${p.id}`)"
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="Informação do Produto" 
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                    <i class="bi bi-file-text"></i>
+                  </button>
                   <button class="btn btn-sm btn-outline-success me-2" 
                     data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Produto" 
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-file-text"></i>
+                    <i class="bi bi-pencil"></i>
                   </button>
                   <button class="btn btn-sm btn-outline-danger" 
                     data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Produto" 
@@ -52,22 +58,15 @@
 </template>
 
 <script>
+import productMixin from '@/mixins/products'
+
 export default {
-  name: "ProdutoLista",
-  data: () => ({
-    data: null
-  }),
-  methods: {
-    listarProdutos() {
-      fetch('http://localhost:8000/api/product')
-        .then(responseServer => responseServer.json())
-        .then(response => {
-          this.data = response
-        })
-    }
-  },
+  name: "ProductList",
+  mixins: [
+    productMixin
+  ],
   created() {
-    this.listarProdutos()
+    this.listarProdutos("http://localhost:8000/api/product")
   }
 };
 </script>

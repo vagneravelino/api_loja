@@ -7,25 +7,25 @@
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/fornecedor"
+          to="/supplier"
         >
           <i class="bi bi-cart"></i> Fornecedores
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/produto"
+          to="/product"
         >
           <i class="bi bi-box-seam"></i> Produtos
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/marca"
+          to="/brand"
         >
           <i class="bi bi-award"></i> Marcas
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/usuario"
+          to="/user"
         >
           <i class="bi bi-person"></i> Usuários
         </router-link>
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "Conteudo",
+  name: "Main",
 };
 </script>
 

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Topo",
+  name: "Header",
 };
 </script>
 

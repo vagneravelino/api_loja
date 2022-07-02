@@ -95,7 +95,7 @@
 
 <script>
 export default {
-  name: "ProdutoCadastro",
+  name: "ProductStore",
   data: () => ({
     data: null,
     brands: null,

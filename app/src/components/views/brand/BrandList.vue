@@ -47,7 +47,7 @@
 
 <script>
 export default {
-    name: 'MarcaLista',
+    name: 'BrandList',
     data: () => ({
       data: null
     }),
