@@ -1,15 +1,14 @@
 export default {
   data: () => ({
-    data: {},
-    suppliers: {},
+    suppliers: {}
   }),
   methods: {
-    listarFornecedores(url) {
+    getSupplier(url) {
       fetch(url)
         .then((responseServer) => responseServer.json())
         .then((response) => {
-          this.suppliers = response;
+          this.suppliers = response.data;
         });
-    }
+    },
   },
 };

@@ -6,9 +6,13 @@
         <h5 class="card-title">Lista de Produto</h5>
         <div class="row justify-content-end">
           <div class="col-md-1">
-            <button class="btn btn-sm btn-primary"
-              @click="this.$router.push('/produto/cadastro')" 
-              data-bs-toggle="tooltip" data-bs-placement="top" title="Cadastrar Novo Produto">
+            <button
+              class="btn btn-sm btn-primary"
+              @click="this.$router.push('/product/store')"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Cadastrar Novo Produto"
+            >
               <i class="bi bi-plus"></i>
             </button>
           </div>
@@ -24,32 +28,55 @@
             </tr>
           </thead>
           <tbody>
-            <template v-if="data">
-              <tr v-for="p in data" :key="p.id">
-                <td>{{ p.name }}</td>
-                <td>{{ p.brand_id }}</td>
-                <td>{{ p.supplier_id }}</td>
-                <td>{{ p.price }}</td>
-                <td>
-                  <button class="btn btn-sm btn-outline-warning me-2" 
-                    @click="this.$router.push(`/produto/${p.id}`)"
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Informação do Produto" 
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-file-text"></i>
-                  </button>
-                  <button class="btn btn-sm btn-outline-success me-2" 
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Produto" 
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-pencil"></i>
-                  </button>
-                  <button class="btn btn-sm btn-outline-danger" 
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Produto" 
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </template>
+            <tr v-for="p in products" :key="p.id">
+              <td>{{ p.name }}</td>
+              <td>{{ p.brand_id }}</td>
+              <td>{{ p.supplier_id }}</td>
+              <td>{{ p.price }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-outline-warning me-2"
+                  @click="this.$router.push(`/product/${p.id}`)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Informação do Produto"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-file-text"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-success me-2"
+                  @click="this.$router.push(`/product/update/${p.id}`)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Editar Produto"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-danger"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Remover Produto"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -58,16 +85,14 @@
 </template>
 
 <script>
-import productMixin from '@/mixins/products'
+import productMixin from "@/mixins/products";
 
 export default {
   name: "ProductList",
-  mixins: [
-    productMixin
-  ],
+  mixins: [productMixin],
   created() {
-    this.listarProdutos("http://localhost:8000/api/product")
-  }
+    this.getProduct("http://localhost:8000/api/product");
+  },
 };
 </script>
 

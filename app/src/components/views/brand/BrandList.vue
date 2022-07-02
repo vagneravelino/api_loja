@@ -6,9 +6,13 @@
         <h5 class="card-title">Lista de Marcas</h5>
         <div class="row justify-content-end">
           <div class="col-md-1">
-            <button class="btn btn-sm btn-primary" 
-              @click="this.$router.push('/marca/cadastro')"
-              data-bs-toggle="tooltip" data-bs-placement="top" title="Cadastrar Nova Marca">
+            <button
+              class="btn btn-sm btn-primary"
+              @click="this.$router.push('/brand/store')"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Cadastrar Nova Marca"
+            >
               <i class="bi bi-plus"></i>
             </button>
           </div>
@@ -21,23 +25,52 @@
             </tr>
           </thead>
           <tbody>
-            <template v-if="data">
-              <tr v-for="m in data.data" :key="m.id">
-                <td>{{ m.name }}</td>
-                <td>
-                  <button class="btn btn-sm btn-outline-success me-2" 
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar Marca" 
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-file-text"></i>
-                  </button>
-                  <button class="btn btn-sm btn-outline-danger" 
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Marca" 
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </template>
+            <tr v-for="m in brands" :key="m.id">
+              <td>{{ m.name }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-outline-warning me-2"
+                  @click="this.$router.push(`/brand/${m.id}`)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Informação da Marca"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-file-text"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-success me-2"
+                  @click="this.$router.push(`/brand/update/${m.id}`)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Editar Marca"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-danger"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Remover Marca"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -46,24 +79,15 @@
 </template>
 
 <script>
+import brandMixin from "@/mixins/brands";
+
 export default {
-    name: 'BrandList',
-    data: () => ({
-      data: null
-    }),
-    methods: {
-      listaMarcas() {
-        fetch('http://localhost:8000/api/brand')
-          .then(responseServer => responseServer.json())
-          .then(response => {
-            this.data = response
-          })
-      },
-    },
-      created() {
-        this.listaMarcas()
-      }
-}
+  name: "BrandList",
+  mixins: [brandMixin],
+  created() {
+    this.getBrand("http://localhost:8000/api/brand");
+  },
+};
 </script>
 
 <style scoped>

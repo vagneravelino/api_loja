@@ -3,7 +3,7 @@
     <div class="card mt-3">
       <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Cadastro de Usuário</h5>
+        <h5 class="card-title">Editar Usuário: {{ users.id }}</h5>
         <div class="mb-3 row">
           <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
@@ -11,6 +11,7 @@
               type="text"
               class="form-control"
               id="staticName"
+              :value="users.name"
               placeholder="João da Silva"
             />
           </div>
@@ -22,6 +23,7 @@
               type="text"
               class="form-control"
               id="staticEmail"
+              :value="users.email"
               placeholder="email@exemplo.com.br"
             />
           </div>
@@ -50,8 +52,16 @@
 </template>
 
 <script>
+import userMixin from '@/mixins/users'
+
 export default {
-  name: "UserStore",
+  name: "UserUpdate",
+  mixins: [
+    userMixin
+  ],
+  created() {
+    this.getUser(`http://localhost:8000/api/user/${this.$route.params.id}`)
+  }
 };
 </script>
 

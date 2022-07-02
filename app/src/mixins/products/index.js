@@ -1,13 +1,13 @@
 export default {
   data: () => ({
-    data: {},
+    products: {},
   }),
   methods: {
-    listarProdutos(url) {
+    getProduct(url) {
       fetch(url)
         .then((responseServer) => responseServer.json())
         .then((response) => {
-          this.data = response.data;
+          this.products = response.data;
         });
     },
   },

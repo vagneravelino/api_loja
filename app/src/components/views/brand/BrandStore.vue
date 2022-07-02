@@ -18,7 +18,7 @@
         <div class="row justify-content-end">
           <div class="col-sm-2">
             <button class="form-control btn btn-light"
-              @click="this.$router.push('/marca')">Cancelar</button>
+              @click="this.$router.push('/brand')">Cancelar</button>
           </div>
           <div class="col-sm-2">
             <button class="form-control btn btn-primary">Salvar</button>

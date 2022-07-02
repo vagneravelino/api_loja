@@ -81,7 +81,7 @@
         <div class="row justify-content-end">
           <div class="col-sm-2">
             <button class="form-control btn btn-light"
-              @click="this.$router.push('/produto')"
+              @click="this.$router.push('/product')"
             >Cancelar</button>
           </div>
           <div class="col-sm-2">

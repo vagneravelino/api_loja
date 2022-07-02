@@ -1,14 +1,13 @@
 export default {
   data: () => ({
-    data: {},
     brands: {},
   }),
   methods: {
-    listarMarcas(url) {
+    getBrand(url) {
       fetch(url)
         .then((responseServer) => responseServer.json())
         .then((response) => {
-          this.brands = response;
+          this.brands = response.data;
         });
     },
   },
