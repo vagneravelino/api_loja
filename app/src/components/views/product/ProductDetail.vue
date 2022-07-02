@@ -92,13 +92,20 @@
             />
           </div>
         </div>
-        <div class="row justify-content-end">
+        <div class="row justify-content-between">
           <div class="col-sm-2">
             <button
               class="form-control btn btn-light"
-              @click="this.$router.push('/product')"
+              @click="this.$router.push({ name: 'Product' })"
             >
+              <i class="bi bi-arrow-left-circle"></i>
               Voltar
+            </button>
+          </div>
+          <div class="col-sm-2">
+            <button class="form-control btn btn-danger">
+              <i class="bi bi-trash"></i>
+              Deletar
             </button>
           </div>
         </div>
@@ -119,12 +126,8 @@ export default {
     this.getProduct(
       `http://localhost:8000/api/product/${this.$route.params.id}`
     );
-    this.getBrand(
-      `http://localhost:8000/api/brand`
-    );
-    this.getSupplier(
-      `http://localhost:8000/api/supplier`
-    );
+    this.getBrand(`http://localhost:8000/api/brand`);
+    this.getSupplier(`http://localhost:8000/api/supplier`);
   },
 };
 </script>

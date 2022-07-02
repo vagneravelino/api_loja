@@ -9,7 +9,6 @@ import SupplierUpdate from '@/components/views/supplier/SupplierUpdate.vue'
 import Home from '@/components/views/main/Home.vue'
 
 import Brand from '@/components/views/brand/Brand.vue'
-import BrandDelete from '@/components/views/brand/BrandDelete.vue'
 import BrandDetail from '@/components/views/brand/BrandDetail.vue'
 import BrandStore from '@/components/views/brand/BrandStore.vue'
 import BrandUpdate from '@/components/views/brand/BrandUpdate.vue'
@@ -35,10 +34,9 @@ const routes = [
     },
     {
         path: '/supplier',
-        name: 'Supplier',
         component: Supplier,
         children: [
-            { path: '', name: 'SupplierList', component: SupplierList },
+            { path: '', name: 'Supplier', component: SupplierList },
             { path: ':id', name: 'SupplierDetail', component: SupplierDetail },
             { path: 'store', name: 'SupplierStore', component: SupplierStore },
             { path: 'update/:id', name: 'SupplierUpdate', component: SupplierUpdate },
@@ -46,22 +44,19 @@ const routes = [
     },
     {
         path: '/brand',
-        name: 'Brand',
         component: Brand,
         children: [
-            { path: '', name: 'BrandList', component: BrandList },
+            { path: '', name: 'Brand', component: BrandList },
             { path: ':id', name: 'BrandDetail', component: BrandDetail },
             { path: 'store', name: 'BrandStore', component: BrandStore },
             { path: 'update/:id', name: 'BrandUpdate', component: BrandUpdate },
-            { path: 'delete', name: 'BrandDelete', component: BrandDelete },
         ]
     },
     {
         path: '/product',
-        name: 'Product',
         component: Product,
         children: [
-            { path: '', name: 'ProductList', component: ProductList },
+            { path: '', name: 'Product', component: ProductList },
             { path: ':id', name: 'ProductDetail', component: ProductDetail },
             { path: 'store', name: 'ProductStore', component: ProductStore },
             { path: 'update/:id', name: 'ProductUpdate', component: ProductUpdate },
@@ -69,10 +64,9 @@ const routes = [
     },
     {
         path: '/user',
-        name: 'User',
         component: User,
         children: [
-            { path: '', name: 'UserList', component: UserList },
+            { path: '', name: 'User', component: UserList },
             { path: ':id', name: 'UserDetail', component: UserDetail },
             { path: 'store', name: 'UserStore', component: UserStore },
             { path: 'update/:id', name: 'UserUpdate', component: UserUpdate },

@@ -5,15 +5,16 @@
       <div class="card-body">
         <h5 class="card-title">Lista de Produto</h5>
         <div class="row justify-content-end">
-          <div class="col-md-1">
+          <div class="col-md-2">
             <button
               class="btn btn-sm btn-primary"
-              @click="this.$router.push('/product/store')"
+              @click="this.$router.push({ name: 'ProductStore' })"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Cadastrar Novo Produto"
             >
               <i class="bi bi-plus"></i>
+              Novo Produto
             </button>
           </div>
         </div>
@@ -36,7 +37,7 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push(`/product/${p.id}`)"
+                  @click="this.$router.push({ name: 'ProductDetail', params: { id: p.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação do Produto"
@@ -50,7 +51,7 @@
                 </button>
                 <button
                   class="btn btn-sm btn-outline-success me-2"
-                  @click="this.$router.push(`/product/update/${p.id}`)"
+                  @click="this.$router.push({ name: 'ProductUpdate', params: { id: p.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Editar Produto"
@@ -61,19 +62,6 @@
                   "
                 >
                   <i class="bi bi-pencil"></i>
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-danger"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Remover Produto"
-                  style="
-                    --bs-btn-padding-y: 0.25rem;
-                    --bs-btn-padding-x: 0.5rem;
-                    --bs-btn-font-size: 0.75rem;
-                  "
-                >
-                  <i class="bi bi-trash"></i>
                 </button>
               </td>
             </tr>

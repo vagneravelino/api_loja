@@ -17,11 +17,20 @@
             />
           </div>
         </div>
-        <div class="row justify-content-end">
+        <div class="row justify-content-between">
           <div class="col-sm-2">
             <button class="form-control btn btn-light"
-              @click="this.$router.push('/supplier')"
-            >Cancelar</button>
+              @click="this.$router.push({ name: 'Supplier' })"
+            >
+              <i class="bi bi-arrow-left-circle"></i>
+              Voltar
+            </button>
+          </div>
+          <div class="col-sm-2">
+            <button class="form-control btn btn-danger">
+              <i class="bi bi-trash"></i>
+              Deletar
+            </button>
           </div>
         </div>
       </div>

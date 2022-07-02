@@ -5,15 +5,16 @@
       <div class="card-body">
         <h5 class="card-title">Lista de Usuários</h5>
         <div class="row justify-content-end">
-          <div class="col-md-1">
+          <div class="col-md-2">
             <button
               class="btn btn-sm btn-primary"
-              @click="this.$router.push('/user/store')"
+              @click="this.$router.push({ name: 'UserStore' })"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Cadastrar Novo Usuário"
             >
               <i class="bi bi-plus"></i>
+              Novo Usuário
             </button>
           </div>
         </div>
@@ -32,7 +33,7 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push(`/user/${u.id}`)"
+                  @click="this.$router.push({ name: 'UserDetail', params: { id: u.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação do Usuário"
@@ -46,7 +47,7 @@
                 </button>
                 <button
                   class="btn btn-sm btn-outline-success me-2"
-                  @click="this.$router.push(`/user/update/${u.id}`)"
+                  @click="this.$router.push({ name: 'UserUpdate', params: { id: u.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Editar Usuário"
@@ -57,19 +58,6 @@
                   "
                 >
                   <i class="bi bi-pencil"></i>
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-danger"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Remover Usuário"
-                  style="
-                    --bs-btn-padding-y: 0.25rem;
-                    --bs-btn-padding-x: 0.5rem;
-                    --bs-btn-font-size: 0.75rem;
-                  "
-                >
-                  <i class="bi bi-trash"></i>
                 </button>
               </td>
             </tr>

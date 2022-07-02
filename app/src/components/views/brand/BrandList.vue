@@ -5,15 +5,16 @@
       <div class="card-body">
         <h5 class="card-title">Lista de Marcas</h5>
         <div class="row justify-content-end">
-          <div class="col-md-1">
+          <div class="col-md-2">
             <button
               class="btn btn-sm btn-primary"
-              @click="this.$router.push('/brand/store')"
+              @click="this.$router.push({ name: 'BrandStore' })"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Cadastrar Nova Marca"
             >
               <i class="bi bi-plus"></i>
+              Nova Marca
             </button>
           </div>
         </div>
@@ -30,7 +31,7 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push(`/brand/${m.id}`)"
+                  @click="this.$router.push({ name: 'BrandDetail', params: { id: m.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação da Marca"
@@ -44,7 +45,7 @@
                 </button>
                 <button
                   class="btn btn-sm btn-outline-success me-2"
-                  @click="this.$router.push(`/brand/update/${m.id}`)"
+                  @click="this.$router.push({ name: 'BrandUpdate', params: { id: m.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Editar Marca"
@@ -55,19 +56,6 @@
                   "
                 >
                   <i class="bi bi-pencil"></i>
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-danger"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Remover Marca"
-                  style="
-                    --bs-btn-padding-y: 0.25rem;
-                    --bs-btn-padding-x: 0.5rem;
-                    --bs-btn-font-size: 0.75rem;
-                  "
-                >
-                  <i class="bi bi-trash"></i>
                 </button>
               </td>
             </tr>

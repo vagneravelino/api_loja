@@ -34,13 +34,19 @@
             <input type="password" class="form-control" id="inputPassword" placeholder="Senha Forte" />
           </div>
         </div>
-        <div class="row justify-content-end">
+        <div class="row justify-content-between">
           <div class="col-sm-2">
             <button class="form-control btn btn-light"
-              @click="this.$router.push('/user')">Cancelar</button>
+              @click="this.$router.push({ name: 'User' })">
+              <i class="bi bi-x-circle"></i>
+              Cancelar
+            </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">Salvar</button>
+            <button class="form-control btn btn-primary">
+              <i class="bi bi-cloud-download"></i>
+              Salvar
+            </button>
           </div>
         </div>
 
