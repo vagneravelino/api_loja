@@ -31,7 +31,7 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push({ name: 'BrandDetail', params: { id: m.id } })"
+                  @click="this.$router.push({ name: 'BrandDetail', params: { id: m.id }, props: { id: m.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação da Marca"
@@ -45,7 +45,7 @@
                 </button>
                 <button
                   class="btn btn-sm btn-outline-success me-2"
-                  @click="this.$router.push({ name: 'BrandUpdate', params: { id: m.id } })"
+                  @click="this.$router.push({ name: 'BrandUpdate', params: { id: m.id }, props: { id: m.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Editar Marca"

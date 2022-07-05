@@ -5,7 +5,10 @@
       <div class="card-body">
         <h5 class="card-title">Cadastro de Usuário</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="staticName" class="col-sm-2 col-form-label">
+            Nome
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               type="text"
@@ -16,7 +19,10 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            Email
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               type="text"
@@ -28,10 +34,24 @@
         </div>
         <div class="mb-3 row">
           <label for="inputPassword" class="col-sm-2 col-form-label"
-            >Senha</label
+            >
+            Senha
+            <span class="text-danger"> *</span>
+          </label
           >
           <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" placeholder="Senha Forte" />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="inputPassword" class="col-sm-2 col-form-label"
+            >
+            Confirmar Senha
+            <span class="text-danger"> *</span>
+          </label
+          >
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Senha Forte" />
           </div>
         </div>
         <div class="row justify-content-between">

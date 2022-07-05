@@ -1,19 +1,24 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Cadastro de Marca</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">
+            Nome
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               v-model="name"
               type="text"
               class="form-control"
-              id="staticName"
+              :class="validate"
+              id="name"
               placeholder="Brastemp"
+              required
             />
+            <div v-if="error" v-text="error" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">
@@ -46,7 +51,6 @@ export default {
     name: 'BrandStore',
     data: () => ({
       name: '',
-      retorno: ''
     }),
     mixins: [brandMixin],
     methods: {
@@ -55,14 +59,16 @@ export default {
           name: this.name
         }
 
-        // this.$store.dispatch('storeBrand', form)
         this.storeBrand(form)
-
       }
     },
+    watch: {
+      retorno(r) {
+        if (r.status === 'Sucesso'){
+          r = ''
+          this.$router.push({ name: 'Brand' })
+        }
+      }
+    }
 }
 </script>
-
-<style>
-
-</style>

@@ -5,7 +5,10 @@
       <div class="card-body">
         <h5 class="card-title">Cadastro de Fornecedor</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="staticName" class="col-sm-2 col-form-label">
+            Nome
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               type="text"

@@ -5,7 +5,10 @@
       <div class="card-body">
         <h5 class="card-title">Cadastro de Produto</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="staticName" class="col-sm-2 col-form-label">
+            Nome
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               type="text"
@@ -17,7 +20,9 @@
         </div>
         <div class="mb-3 row">
           <label for="staticDescription" class="col-sm-2 col-form-label"
-            >Descrição</label
+            >Descrição
+            <span class="text-danger"> *</span>
+          </label
           >
           <div class="col-sm-10">
             <textarea
@@ -28,7 +33,10 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticBrand" class="col-sm-2 col-form-label">Marca</label>
+          <label for="staticBrand" class="col-sm-2 col-form-label">
+            Marca
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-4">
             <select
               id="staticBrand"
@@ -41,7 +49,9 @@
             </select>
           </div>
           <label for="staticSupplier" class="col-sm-2 col-form-label"
-            >Fabricante</label
+            >Fabricante
+            <span class="text-danger"> *</span>
+          </label
           >
           <div class="col-sm-4">
             <select
@@ -57,7 +67,9 @@
         </div>
         <div class="mb-3 row">
           <label for="staticFeatures" class="col-sm-2 col-form-label"
-            >Características</label
+            >Características
+            <span class="text-danger"> *</span>
+          </label
           >
           <div class="col-sm-10">
             <textarea
@@ -68,7 +80,10 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticPrice" class="col-sm-2 col-form-label">Preço (R$)</label>
+          <label for="staticPrice" class="col-sm-2 col-form-label">
+            Preço (R$)
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
               type="text"

@@ -2,15 +2,18 @@
   <div class="container">
     <div class="card mt-3">
       <div class="card-body">
-        <h5 class="card-title">Editar Marca: {{ getBrands.id }}</h5>
+        <h5 class="card-title">Editar Marca: {{ id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">
+            Nome
+            <span class="text-danger"> *</span>
+          </label>
           <div class="col-sm-10">
             <input
+              v-model="getBrands.name"
               type="text"
               class="form-control"
-              id="staticName"
-              :value="getBrands.name"
+              id="name"
               placeholder="Brastemp"
             />
           </div>
@@ -25,7 +28,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button 
+              @click="setData()"
+              class="form-control btn btn-primary">
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
@@ -41,11 +46,27 @@ import brandMixin from '@/mixins/brands'
 
 export default {
     name: 'BrandUpdate',
+    props: { id: [String, Number]},
+    data: () => ({
+      name: '',
+      retorno: '',
+    }),
     mixins: [
       brandMixin
     ],
+    methods: {
+      setData() {
+        const form = {
+          id: this.getBrands.id,
+          name: this.getBrands.name
+        }
+
+        this.updateBrand(form)
+
+      }
+    },
     created() {
-      this.getApiBrands(`http://localhost:8000/api/brand/${this.$route.params.id}`)
+      this.getApiBrands(`http://localhost:8000/api/brand/${this.id}`)
     }
 }
 </script>

@@ -4,13 +4,13 @@
       <div class="card-body">
         <h5 class="card-title">Detalhes da Marca: {{ getBrands.id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
               type="text"
               class="form-control-plaintext"
               readonly
-              id="staticName"
+              id="name"
               :value="getBrands.name"
               placeholder="Brastemp"
             />
@@ -27,6 +27,7 @@
           </div>
           <div class="col-sm-2">
             <button 
+              @click="deleteBrand(getBrands.id)"
               class="form-control btn btn-danger">
               <i class="bi bi-trash"></i>
               Deletar
@@ -43,11 +44,14 @@ import brandMixin from '@/mixins/brands'
 
 export default {
     name: 'BrandDetail',
+    props: {
+      id: [String, Number]
+    },
     mixins: [
       brandMixin
     ],
     created() {
-      this.getApiBrands(`http://localhost:8000/api/brand/${this.$route.params.id}`)
+      this.getApiBrands(`http://localhost:8000/api/brand/${this.id}`)
     }
 }
 </script>
