@@ -4,7 +4,7 @@
       <div class="col">
         <div class="destaque">
           <h4 class="text-primary text-center">
-            Sistema de Gestão de Loja.
+            {{ name }}
           </h4>
         </div>
       </div>
@@ -13,8 +13,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "Home",
+  computed: {
+    ...mapState('store', ['name'])
+  }
 };
 </script>
 

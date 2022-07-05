@@ -47,7 +47,7 @@ export default {
     supplierMixin
   ],
   created() {
-    this.getSupplier(`http://localhost:8000/api/supplier/${this.$route.params.id}`)
+    this.getApiSuppliers(`http://localhost:8000/api/supplier/${this.$route.params.id}`)
   }
 };
 </script>

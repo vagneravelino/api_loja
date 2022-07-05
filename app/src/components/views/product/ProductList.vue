@@ -31,8 +31,8 @@
           <tbody>
             <tr v-for="p in products" :key="p.id">
               <td>{{ p.name }}</td>
-              <td>{{ p.brand_id }}</td>
-              <td>{{ p.supplier_id }}</td>
+              <td>{{ p.brand.name }}</td>
+              <td>{{ p.supplier.name }}</td>
               <td>{{ p.price }}</td>
               <td>
                 <button

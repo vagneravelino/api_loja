@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import supplierMixin from '@/mixins/suppliers'
+// import supplierMixin from '@/mixins/suppliers'
 
 export default {
   name: "Supplier",
-  mixin: [
-    supplierMixin
-  ]
+  // mixins: [
+    // supplierMixin
+  // ]
 };
 </script>
 

@@ -26,7 +26,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="m in brands" :key="m.id">
+            <tr v-for="m in this.getBrands" :key="m.id">
               <td>{{ m.name }}</td>
               <td>
                 <button
@@ -73,7 +73,7 @@ export default {
   name: "BrandList",
   mixins: [brandMixin],
   created() {
-    this.getBrand("http://localhost:8000/api/brand");
+    this.getApiBrands('http://localhost:8000/api/brand')
   },
 };
 </script>

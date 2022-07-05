@@ -8,6 +8,7 @@
           <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
+              v-model="name"
               type="text"
               class="form-control"
               id="staticName"
@@ -24,7 +25,10 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button
+              @click="setData()"
+              class="form-control btn btn-primary"
+            >
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
@@ -36,8 +40,26 @@
 </template>
 
 <script>
+import brandMixin from '@/mixins/brands'
+
 export default {
-    name: 'BrandStore'
+    name: 'BrandStore',
+    data: () => ({
+      name: '',
+      retorno: ''
+    }),
+    mixins: [brandMixin],
+    methods: {
+      setData() {
+        const form = {
+          name: this.name
+        }
+
+        // this.$store.dispatch('storeBrand', form)
+        this.storeBrand(form)
+
+      }
+    },
 }
 </script>
 

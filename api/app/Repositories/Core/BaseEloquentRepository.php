@@ -62,7 +62,7 @@ class BaseEloquentRepository implements RepositoryInterface
 
     public function relationships(...$relationships)
     {
-        $this->entity = $this->entity->whit($relationships);
+        $this->entity = $this->entity->with($relationships);
 
         return $this;
     }

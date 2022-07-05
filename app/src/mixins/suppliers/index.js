@@ -1,14 +1,19 @@
+import { mapState,  mapActions} from 'vuex'
+
 export default {
   data: () => ({
-    suppliers: {}
+    form: {
+      name: null
+    }
   }),
+  computed: {
+    ...mapState('supplierStore', ['suppliers'])
+  },
   methods: {
-    getSupplier(url) {
-      fetch(url)
-        .then((responseServer) => responseServer.json())
-        .then((response) => {
-          this.suppliers = response.data;
-        });
-    },
+    ...mapActions('supplierStore', {
+      getApiSuppliers: (dispatch, payload) => {
+        dispatch('getApiSuppliers', payload)
+      }
+    })
   },
 };

@@ -24,7 +24,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->_repository->getAll();
+        $products = $this->_repository
+            ->relationships('brand', 'supplier')
+            ->getAll();
 
         return success('Lista de Produtos', 200, $products);
     }

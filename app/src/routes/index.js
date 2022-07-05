@@ -1,30 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Supplier from '@/components/views/supplier/Supplier.vue'
-import SupplierDetail from '@/components/views/supplier/SupplierDetail.vue'
-import SupplierList from '@/components/views/supplier/SupplierList.vue'
-import SupplierStore from '@/components/views/supplier/SupplierStore.vue'
-import SupplierUpdate from '@/components/views/supplier/SupplierUpdate.vue'
+const Supplier = () => import(/* webpackChunkName: 'suppliers' */ '@/components/views/supplier/Supplier.vue')
+const SupplierDetail = () => import(/* webpackChunkName: 'suppliers' */ '@/components/views/supplier/SupplierDetail.vue')
+const SupplierList = () => import(/* webpackChunkName: 'suppliers'*/ '@/components/views/supplier/SupplierList.vue')
+const SupplierStore = () =>  import(/* webpackChunkName: 'suppliers'*/ '@/components/views/supplier/SupplierStore.vue')
+const SupplierUpdate = () =>  import(/* webpackChinkName: 'suppliers'*/ '@/components/views/supplier/SupplierUpdate.vue')
 
 import Home from '@/components/views/main/Home.vue'
 
-import Brand from '@/components/views/brand/Brand.vue'
-import BrandDetail from '@/components/views/brand/BrandDetail.vue'
-import BrandStore from '@/components/views/brand/BrandStore.vue'
-import BrandUpdate from '@/components/views/brand/BrandUpdate.vue'
-import BrandList from '@/components/views/brand/BrandList.vue'
+const Brand = () => import(/* webpackChunkName: 'brands' */ '@/components/views/brand/Brand.vue')
+const BrandDetail = () => import(/* webpackChunkName: 'brands' */ '@/components/views/brand/BrandDetail.vue')
+const BrandStore = () => import(/* webpackChunkName: 'brands' */ '@/components/views/brand/BrandStore.vue')
+const BrandUpdate =() => import(/* webpackChunkName: 'brands' */ '@/components/views/brand/BrandUpdate.vue')
+const BrandList = () => import(/* webpackChnkName: 'brands' */'@/components/views/brand/BrandList.vue')
 
-import Product from '@/components/views/product/Product.vue'
-import ProductDetail from '@/components/views/product/ProductDetail.vue'
-import ProductList from '@/components/views/product/ProductList.vue'
-import ProductStore from '@/components/views/product/ProductStore.vue'
-import ProductUpdate from '@/components/views/product/ProductUpdate.vue'
+const Product = () => import(/* webpackChunkName: 'products' */ '@/components/views/product/Product.vue')
+const ProductDetail = () => import(/* webpackChunkName: 'products' */ '@/components/views/product/ProductDetail.vue')
+const ProductList = () =>  import(/* webpackChunkName: 'products' */ '@/components/views/product/ProductList.vue')
+const ProductStore = () => import(/* webpackChunkName: 'products' */ '@/components/views/product/ProductStore.vue')
+const ProductUpdate = () => import(/* webpackChunkName: 'products' */ '@/components/views/product/ProductUpdate.vue')
 
-import User from '@/components/views/user/User.vue'
-import UserDetail from '@/components/views/user/UserDetail.vue'
-import UserStore from '@/components/views/user/UserStore.vue'
-import UserUpdate from '@/components/views/user/UserUpdate.vue'
-import UserList from '@/components/views/user/UserList.vue'
+const User = () => import(/* webpackChunkName: 'users' */ '@/components/views/user/User.vue')
+const UserDetail = () => import(/* webpackChunkName: 'users' */ '@/components/views/user/UserDetail.vue')
+const UserStore = () => import(/* webpackChunkName: 'users' */ '@/components/views/user/UserStore.vue')
+const UserUpdate = () => import(/* webpackChunkName: 'users' */ '@/components/views/user/UserUpdate.vue')
+const UserList = () => import(/* webpackChunkName: 'users' */ '@/components/views/user/UserList.vue')
 
 const routes = [
     {
@@ -72,6 +72,9 @@ const routes = [
             { path: 'update/:id', name: 'UserUpdate', component: UserUpdate },
         ]
     },
+    {
+        path: '/:catchAll(.*)*', redirect: '/'
+    }
 ]
 
 const router = createRouter({

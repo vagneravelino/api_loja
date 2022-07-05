@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Editar Marca: {{ brands.id }}</h5>
+        <h5 class="card-title">Editar Marca: {{ getBrands.id }}</h5>
         <div class="mb-3 row">
           <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
@@ -11,7 +10,7 @@
               type="text"
               class="form-control"
               id="staticName"
-              :value="brands.name"
+              :value="getBrands.name"
               placeholder="Brastemp"
             />
           </div>
@@ -46,7 +45,7 @@ export default {
       brandMixin
     ],
     created() {
-      this.getBrand(`http://localhost:8000/api/brand/${this.$route.params.id}`)
+      this.getApiBrands(`http://localhost:8000/api/brand/${this.$route.params.id}`)
     }
 }
 </script>

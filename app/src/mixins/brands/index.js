@@ -1,14 +1,29 @@
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   data: () => ({
-    brands: {},
+    form: {
+      name: null
+    },
   }),
   methods: {
-    getBrand(url) {
-      fetch(url)
-        .then((responseServer) => responseServer.json())
-        .then((response) => {
-          this.brands = response.data;
-        });
-    },
+    ...mapActions('brandStore', {
+      getApiBrands: (dispatch, payload) => {
+        dispatch('getApiBrands', payload)
+      },
+      storeBrand: (dispatch, payload) => {
+        dispatch('storeBrand', payload)
+      }
+    }),
+
+    validate() {
+
+    }
   },
+  computed: {
+    ...mapGetters('brandStore', {
+      getBrands: 'getBrands',
+    }),
+  },
+
 };
