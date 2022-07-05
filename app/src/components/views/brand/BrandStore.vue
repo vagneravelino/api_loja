@@ -10,7 +10,7 @@
           </label>
           <div class="col-sm-10">
             <input
-              v-model="name"
+              v-model="form.name"
               type="text"
               class="form-control"
               :class="validate"
@@ -31,7 +31,7 @@
           </div>
           <div class="col-sm-2">
             <button
-              @click="setData()"
+              @click="store(form)"
               class="form-control btn btn-primary"
             >
               <i class="bi bi-cloud-download"></i>
@@ -46,29 +46,38 @@
 
 <script>
 import brandMixin from '@/mixins/brands'
+import { useToast } from "vue-toastification"
 
 export default {
     name: 'BrandStore',
-    data: () => ({
-      name: '',
-    }),
     mixins: [brandMixin],
     methods: {
-      setData() {
-        const form = {
-          name: this.name
-        }
+      teste() {
+        const toast = useToast()
 
-        this.storeBrand(form)
+        toast('Teste')
+
+        // alerta('Alerta personalizada!')
+        // this.$alerta('Alerta personalizada 2!')
+
+        // const alerta = new AWN()
+
+        // alerta.success('Teste')
+        // this.$awn.alert('Teste')
+        // new AWN().success(teste)
       }
     },
     watch: {
       retorno(r) {
         if (r.status === 'Sucesso'){
           r = ''
-          this.$router.push({ name: 'Brand' })
+          // this.$router.push({ name: 'Brand' })
         }
       }
     }
 }
 </script>
+
+<style>
+/* @import '~vue-awesome-notifications/dist/styles/style.css' */
+</style>

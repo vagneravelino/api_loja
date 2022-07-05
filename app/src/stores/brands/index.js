@@ -1,12 +1,15 @@
+import { headerInit } from '@/config/index'
+
 export default {
   namespaced: true,
   state: {
     brands: {},
     retorno: {},
-    error: ''
+    error: {}
   },
   getters: {
     getBrands: (state) => state.brands,
+    getErrors: (state) => state.error
   },
   mutations: {
     setBrands(state, payload) {
@@ -19,28 +22,7 @@ export default {
   },
   actions: {
     storeBrand(context, payload) {
-      fetch("http://localhost:8000/api/brand", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
-        .then(async (response) => {
-          const data = await response.json();
-
-          if (!response.ok) {
-            const error = data.errors;
-
-            return Promise.reject(error);
-          }
-
-          context.commit("setBrands", data);
-        })
-        .catch((error) => {
-          context.commit('setError', error.name[0])
-        });
+      
     },
 
     updateBrand(context, payload) {
@@ -48,7 +30,7 @@ export default {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          'Accept': "application/json",
         },
         body: JSON.stringify(payload),
       })
@@ -73,7 +55,7 @@ export default {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          'Accept': "application/json",
         },
       })
         .then(async (response) => {

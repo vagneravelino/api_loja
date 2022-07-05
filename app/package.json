@@ -9,9 +9,14 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "sweetalert2": "^11.4.19",
+    "i": "^0.3.7",
+    "install": "^0.13.0",
+    "npm": "^8.13.2",
+    "remove": "^0.1.5",
     "vue": "^3.2.13",
+    "vue-awesome-notifications": "^3.1.1",
     "vue-router": "^4.0.16",
+    "vue-toastification": "^2.0.0-rc.5",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
