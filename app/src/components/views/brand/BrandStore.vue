@@ -13,12 +13,10 @@
               v-model="form.name"
               type="text"
               class="form-control"
-              :class="validate"
               id="name"
               placeholder="Brastemp"
               required
             />
-            <div v-if="error" v-text="error" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">

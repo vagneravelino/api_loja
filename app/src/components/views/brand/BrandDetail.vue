@@ -27,7 +27,7 @@
           </div>
           <div class="col-sm-2">
             <button 
-              @click="deleteBrand(getBrands.id)"
+              @click="destroy(id)"
               class="form-control btn btn-danger">
               <i class="bi bi-trash"></i>
               Deletar
@@ -55,7 +55,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

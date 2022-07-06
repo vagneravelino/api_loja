@@ -29,7 +29,7 @@
           </div>
           <div class="col-sm-2">
             <button 
-              @click="setData()"
+              @click="update(id)"
               class="form-control btn btn-primary">
               <i class="bi bi-cloud-download"></i>
               Salvar
@@ -47,30 +47,11 @@ import brandMixin from '@/mixins/brands'
 export default {
     name: 'BrandUpdate',
     props: { id: [String, Number]},
-    data: () => ({
-      name: '',
-      retorno: '',
-    }),
     mixins: [
       brandMixin
     ],
-    methods: {
-      setData() {
-        const form = {
-          id: this.getBrands.id,
-          name: this.getBrands.name
-        }
-
-        this.updateBrand(form)
-
-      }
-    },
     created() {
       this.getApiBrands(`http://localhost:8000/api/brand/${this.id}`)
     }
 }
 </script>
-
-<style>
-
-</style>
