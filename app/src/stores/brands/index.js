@@ -1,11 +1,8 @@
-import { headerInit } from '@/config/index'
-
 export default {
   namespaced: true,
   state: {
     brands: {},
     retorno: {},
-    error: {}
   },
   getters: {
     getBrands: (state) => state.brands,
@@ -18,13 +15,12 @@ export default {
     },
     setError(state, payload) {
       state.error = payload
+    },
+    setRedirect(state, payload) {
+      state.redirect = payload
     }
   },
   actions: {
-    storeBrand(context, payload) {
-      
-    },
-
     updateBrand(context, payload) {
       fetch(`http://localhost:8000/api/brand/${payload.id}`, {
         method: "PUT",
@@ -73,7 +69,6 @@ export default {
           context.commit('setError', error.name[0])
         });
     },
-
 
     getApiBrands(context, payload) {
       fetch(payload)

@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Lista de Marcas</h5>
         <div class="row justify-content-end">

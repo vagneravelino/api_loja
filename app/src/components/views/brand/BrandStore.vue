@@ -31,7 +31,7 @@
           </div>
           <div class="col-sm-2">
             <button
-              @click="store(form)"
+              @click="store()"
               class="form-control btn btn-primary"
             >
               <i class="bi bi-cloud-download"></i>
@@ -46,38 +46,9 @@
 
 <script>
 import brandMixin from '@/mixins/brands'
-import { useToast } from "vue-toastification"
 
 export default {
     name: 'BrandStore',
     mixins: [brandMixin],
-    methods: {
-      teste() {
-        const toast = useToast()
-
-        toast('Teste')
-
-        // alerta('Alerta personalizada!')
-        // this.$alerta('Alerta personalizada 2!')
-
-        // const alerta = new AWN()
-
-        // alerta.success('Teste')
-        // this.$awn.alert('Teste')
-        // new AWN().success(teste)
-      }
-    },
-    watch: {
-      retorno(r) {
-        if (r.status === 'Sucesso'){
-          r = ''
-          // this.$router.push({ name: 'Brand' })
-        }
-      }
-    }
 }
 </script>
-
-<style>
-/* @import '~vue-awesome-notifications/dist/styles/style.css' */
-</style>

@@ -1,42 +1,28 @@
-import { mapGetters, mapActions, mapState } from "vuex";
+import { mapGetters, mapActions, mapState, mapMutations } from "vuex";
+import { uri, headerInit } from '@/config/index'
+import { useToast } from "vue-toastification"
+
+const toast = useToast()
 
 export default {
   data: () => ({
     form: {
       name: null,
     },
-    validate: "",
+    error: '',
+    validate: ''
   }),
   methods: {
+    ...mapMutations("brandStore", {
+      setRedirect: (commit, payload) => {
+        commit('setRedirect', payload)
+      }
+    }),
     ...mapActions("brandStore", {
       getApiBrands: (dispatch, payload) => {
         dispatch("getApiBrands", payload);
       },
-      store: (dispatch, payload) => {
-        /** Refatorar todas as funções referente ao CRUD. */
-        fetch("http://localhost:8000/api/brand", {
-          method: "POST",
-          headers: headerInit,
-          body: JSON.stringify(payload),
-        })
-          .then(async (response) => {
-            const data = await response.json();
 
-            if (!response.ok) {
-              const error = data.errors;
-              context.commit("setError", error);
-
-              return Promise.reject(error);
-            }
-
-            context.commit("setBrands", data);
-          })
-          .catch((error) => {
-            context.commit("setError", error.name[0]);
-          });
-
-        dispatch("storeBrand", payload);
-      },
       updateBrand: (dispatch, payload) => {
         // dispatch('updateBrand', payload)
         console.log(payload);
@@ -46,10 +32,32 @@ export default {
         console.log(payload);
       },
     }),
+
+    store() {
+      fetch(`${uri}/brand`, {
+        method: "POST",
+        headers: headerInit,
+        body: JSON.stringify(this.form),
+      })
+        .then(async (response) => {
+          const data = await response.json();
+          
+          if (!response.ok) {
+            this.error = data.errors.name[0]
+            return false
+          }
+
+          toast.success('Marca cadastrada com sucesso!', { timeout: 5000 })
+          setTimeout(() => {
+            this.$router.push({name: 'Brand'})
+          }, 5000)
+        })
+    },
+
+
   },
   computed: {
     ...mapState("brandStore", {
-      error: "error",
       retorno: "retorno",
     }),
     ...mapGetters("brandStore", {
