@@ -26,12 +26,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="s in suppliers" :key="s.id">
+            <tr v-for="s in getSuppliers" :key="s.id">
               <td>{{ s.name }}</td>
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push({ name: 'SupplierDetail', params: { id: s.id } })"
+                  @click="this.$router.push({ name: 'SupplierDetail', params: { id: s.id }, props: { id: s.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação do Fornecedor"
@@ -75,10 +75,7 @@ export default {
     supplierMixin
   ],
   created() {
-    // this.getSupplier("http://localhost:8000/api/supplier")
     this.getApiSuppliers("http://localhost:8000/api/supplier")
   },
 };
 </script>
-
-<style></style>

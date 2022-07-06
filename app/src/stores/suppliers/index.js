@@ -4,7 +4,7 @@ export default {
         suppliers: {}
     },
     getters: {
-
+        getSuppliers: state => state.suppliers
     },
     mutations: {
         setSuppliers: (state, payload) => {

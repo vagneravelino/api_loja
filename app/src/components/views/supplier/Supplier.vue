@@ -5,14 +5,7 @@
 </template>
 
 <script>
-// import supplierMixin from '@/mixins/suppliers'
-
 export default {
   name: "Supplier",
-  // mixins: [
-    // supplierMixin
-  // ]
 };
 </script>
-
-<style></style>

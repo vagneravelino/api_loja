@@ -14,7 +14,7 @@
               type="text"
               class="form-control"
               id="name"
-              placeholder="Brastemp"
+              placeholder="Nome da Marca"
             />
           </div>
         </div>

@@ -12,7 +12,7 @@
               readonly
               id="name"
               :value="getBrands.name"
-              placeholder="Brastemp"
+              placeholder="Nome da Marca"
             />
           </div>
         </div>

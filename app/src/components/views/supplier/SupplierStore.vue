@@ -1,20 +1,20 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Cadastro de Fornecedor</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">
+          <label for="name" class="col-sm-2 col-form-label">
             Nome
             <span class="text-danger"> *</span>
           </label>
           <div class="col-sm-10">
             <input
+              v-model="form.name"
               type="text"
               class="form-control"
-              id="staticName"
-              placeholder="FastShop"
+              id="name"
+              placeholder="Nome do Fornecedor"
             />
           </div>
         </div>
@@ -27,7 +27,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button class="form-control btn btn-primary"
+              @click="store()"
+            >
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
@@ -39,9 +41,10 @@
 </template>
 
 <script>
+import supplierMixin from '@/mixins/suppliers'
+
 export default {
   name: "SupplierStore",
+  mixins: [supplierMixin]
 };
 </script>
-
-<style></style>

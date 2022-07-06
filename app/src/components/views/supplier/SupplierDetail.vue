@@ -1,19 +1,18 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Informação do Fornecedor: {{ suppliers.id }}</h5>
+        <h5 class="card-title">Informação do Fornecedor: {{ id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
+              v-model="getSuppliers.name"
               type="text"
               class="form-control-plaintext"
-              id="staticName"
-              :value="suppliers.name"
+              id="name"
               readonly
-              placeholder="FastShop"
+              placeholder="Nome do Fornecedor"
             />
           </div>
         </div>
@@ -27,7 +26,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-danger">
+            <button class="form-control btn btn-danger"
+              @click="destroy(id)"
+            >
               <i class="bi bi-trash"></i>
               Deletar
             </button>
@@ -43,6 +44,9 @@ import supplierMixin from '@/mixins/suppliers'
 
 export default {
   name: "SupplierDetail",
+  props: {
+    id: [String, Number]
+  },
   mixins: [
     supplierMixin
   ],
@@ -51,5 +55,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

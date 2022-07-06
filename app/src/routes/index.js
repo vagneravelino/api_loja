@@ -37,9 +37,9 @@ const routes = [
         component: Supplier,
         children: [
             { path: '', name: 'Supplier', component: SupplierList },
-            { path: ':id', name: 'SupplierDetail', component: SupplierDetail },
+            { path: ':id', name: 'SupplierDetail', props: true, component: SupplierDetail },
             { path: 'store', name: 'SupplierStore', component: SupplierStore },
-            { path: 'update/:id', name: 'SupplierUpdate', component: SupplierUpdate },
+            { path: 'update/:id', name: 'SupplierUpdate', props: true, component: SupplierUpdate },
         ]
     },
     {

@@ -1,18 +1,17 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Editar Fornecedor: {{ suppliers.id }}</h5>
+        <h5 class="card-title">Editar Fornecedor: {{ id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
+              v-model="getSuppliers.name"
               type="text"
               class="form-control"
-              id="staticName"
-              :value="suppliers.name"
-              placeholder="FastShop"
+              id="name"
+              placeholder="Nome do Fornecedor"
             />
           </div>
         </div>
@@ -25,7 +24,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button class="form-control btn btn-primary"
+              @click="update(this.id)"
+            >
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
@@ -41,6 +42,9 @@ import supplierMixin from '@/mixins/suppliers'
 
 export default {
   name: "SupplierUpdate",
+  props:{
+    id: [String, Number]
+  },
   mixins: [
     supplierMixin
   ],

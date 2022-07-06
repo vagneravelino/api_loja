@@ -76,9 +76,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.custom-tooltip {
-  --bs-tooltip-bg: var(--bs-primary);
-}
-</style>

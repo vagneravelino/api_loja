@@ -65,7 +65,7 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateSupplierRequest $request, $id)
     {
         if (!$supplier = $this->_repository->findById($id)) {
             return error('Fornecedor não encontrado!', 200);
