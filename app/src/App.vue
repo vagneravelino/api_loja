@@ -18,3 +18,6 @@ export default {
   }
 }
 </script>
+<style>
+  @import '~vue-awesome-notifications/dist/styles/style.css'
+</style>
