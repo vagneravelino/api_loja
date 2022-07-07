@@ -9,7 +9,7 @@ export default {
             name: null,
             email: null,
             password: null,
-            confirm_password: null
+            password_confirmation: null
         },
     },
     getters: {

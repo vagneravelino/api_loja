@@ -41,8 +41,24 @@
               class="form-control" 
               :class="error.password ? 'is-invalid' : ''"
               id="password" 
+              v-model="getUsers.password"
               placeholder="Senha Forte" />
             <div v-if="error.password" v-text="error.password[0]" class="invalid-feedback"></div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="password_confirmation" class="col-sm-2 col-form-label"
+            >Confirmar Senha</label
+          >
+          <div class="col-sm-10">
+            <input 
+              v-model="getUsers.password_confirmation"
+              type="password" 
+              class="form-control" 
+              :class="error.password_confirmation ? 'is-invalid' : ''"
+              id="password_confirmation" 
+              placeholder="Senha Forte" />
+            <div v-if="error.password_confirmation" v-text="error.password_confirmation[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">
@@ -87,7 +103,7 @@ export default {
             name: null,
             email: null,
             password: null,
-            confirm_password: null
+            password_confirmation: null
         }
     this.setErrors(error)
   }

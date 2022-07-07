@@ -28,7 +28,8 @@ class StoreUpdateUserRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:100',
             'email' => "required|email|min:10|max:180|unique:users,email,{$id},id",
-            'password' => 'requiredOnCreate|min:8|max:20'
+            'password' => 'required|min:8|max:20',
+            'password_confirmation' => 'required_with:password|min:8|same:password'
         ];
     }
 }

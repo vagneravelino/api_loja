@@ -3,6 +3,7 @@
     <div class="card mt-3">
       <div class="card-body">
         <h5 class="card-title">Cadastro de Usuário</h5>
+        {{ error }}
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">
             Nome
@@ -56,7 +57,7 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="confirm_password" class="col-sm-2 col-form-label"
+          <label for="password_confirmation" class="col-sm-2 col-form-label"
             >
             Confirmar Senha
             <span class="text-danger"> *</span>
@@ -64,11 +65,13 @@
           >
           <div class="col-sm-10">
             <input
-              v-model="form.confirm_password" 
+              v-model="form.password_confirmation" 
               type="password" 
               class="form-control" 
-              id="confirm_password" 
+              :class="error.password_confirmation ? 'is-invalid' : ''"
+              id="password_confirmation" 
               placeholder="Confirmar a Senha Forte" />
+          <div v-if="error.password_confirmation" v-text="error.password_confirmation[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">
@@ -107,7 +110,7 @@ export default {
             name: null,
             email: null,
             password: null,
-            confirm_password: null
+            password_confirmation: null
         }
     this.setErrors(error)
   }
