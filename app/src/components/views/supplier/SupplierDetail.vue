@@ -41,6 +41,7 @@
 
 <script>
 import supplierMixin from '@/mixins/suppliers'
+import { uri } from '@/config'
 
 export default {
   name: "SupplierDetail",
@@ -51,7 +52,7 @@ export default {
     supplierMixin
   ],
   created() {
-    this.getApiSuppliers(`http://localhost:8000/api/supplier/${this.$route.params.id}`)
+    this.getApiSuppliers(`${uri}/supplier/${this.id}`)
   }
 };
 </script>

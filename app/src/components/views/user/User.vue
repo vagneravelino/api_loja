@@ -9,5 +9,3 @@ export default {
   name: "User",
 };
 </script>
-
-<style></style>

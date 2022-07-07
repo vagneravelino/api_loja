@@ -67,12 +67,13 @@
 
 <script>
 import brandMixin from "@/mixins/brands";
+import { uri } from '@/config'
 
 export default {
   name: "BrandList",
   mixins: [brandMixin],
   created() {
-    this.getApiBrands('http://localhost:8000/api/brand')
+    this.getApiBrands(`${uri}/brand`)
   },
 };
 </script>

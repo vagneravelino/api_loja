@@ -1,7 +1,11 @@
+import axios from 'axios'
+import { header } from '@/config'
+
 export default {
     namespaced: true,
     state: {
-        suppliers: {}
+        suppliers: {},
+        error: {}
     },
     getters: {
         getSuppliers: state => state.suppliers
@@ -9,24 +13,21 @@ export default {
     mutations: {
         setSuppliers: (state, payload) => {
             state.suppliers = payload.data
+        },
+
+        setError: (state, payload) => {
+            state.error = payload
         }
     },
     actions: {
         getApiSuppliers: (context, payload) => {
-            fetch(payload)
-                .then(async response => {
-                    const data = await response.json()
-
-                    if (!response.ok) {
-                        const error = data.errors
-
-                        return Promise.reject(error)
-                    }
-
+            axios.get(payload, { headers: header} )
+                .then(resp => {
+                    const data = resp.data
                     context.commit('setSuppliers', data)
-
-                }).catch(error => {
-                    console.log(error)
+                })
+                .catch(err => {
+                    context.commit('setError', err)
                 })
         }
     }

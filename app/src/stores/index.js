@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 import brandStore from '@/stores/brands'
 import supplierStore from '@/stores/suppliers'
+import userStore from '@/stores/users'
 
 const store = {
   namespaced: true,
@@ -15,6 +16,7 @@ export default createStore({
   modules: {
     brandStore: brandStore,
     supplierStore: supplierStore,
+    userStore: userStore,
     store: store
   },
   

@@ -1,32 +1,29 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Detalhe de Usuário: {{ users.id }}</h5>
+        <h5 class="card-title">Detalhe de Usuário: {{ id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
+              v-model="getUsers.name"
               type="text"
               class="form-control-plaintext"
               readonly
-              id="staticName"
-              :value="users.name"
-              placeholder="João da Silva"
+              id="name"
             />
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
             <input
+              v-model="getUsers.email"
               type="text"
               class="form-control-plaintext"
               readonly
-              id="staticEmail"
-              :value="users.email"
-              placeholder="email@exemplo.com.br"
+              id="email"
             />
           </div>
         </div>
@@ -39,7 +36,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-danger">
+            <button
+              @click="destroy(id)"
+              class="form-control btn btn-danger">
               <i class="bi bi-trash"></i>
               Deletar
             </button>
@@ -53,16 +52,18 @@
 
 <script>
 import userMixin from '@/mixins/users'
+import { uri } from '@/config'
 
 export default {
   name: "UserDetail",
+  props: {
+    id: [String, Number]
+  },
   mixins: [
     userMixin
   ],
   created() {
-    this.getUser(`http://localhost:8000/api/user/${this.$route.params.id}`)
+    this.getApiUsers(`${uri}/user/${this.id}`)
   }
 };
 </script>
-
-<style></style>

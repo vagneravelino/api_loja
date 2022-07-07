@@ -57,9 +57,9 @@ const routes = [
         component: Product,
         children: [
             { path: '', name: 'Product', component: ProductList },
-            { path: ':id', name: 'ProductDetail', component: ProductDetail },
+            { path: ':id', name: 'ProductDetail', props: true, component: ProductDetail },
             { path: 'store', name: 'ProductStore', component: ProductStore },
-            { path: 'update/:id', name: 'ProductUpdate', component: ProductUpdate },
+            { path: 'update/:id', name: 'ProductUpdate', props: true, component: ProductUpdate },
         ]
     },
     {
@@ -67,9 +67,9 @@ const routes = [
         component: User,
         children: [
             { path: '', name: 'User', component: UserList },
-            { path: ':id', name: 'UserDetail', component: UserDetail },
+            { path: ':id', name: 'UserDetail', props: true, component: UserDetail },
             { path: 'store', name: 'UserStore', component: UserStore },
-            { path: 'update/:id', name: 'UserUpdate', component: UserUpdate },
+            { path: 'update/:id', name: 'UserUpdate', props: true, component: UserUpdate },
         ]
     },
     {

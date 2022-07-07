@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Lista de Fornecedores</h5>
         <div class="row justify-content-end">
@@ -68,6 +67,7 @@
 
 <script>
 import supplierMixin from '@/mixins/suppliers'
+import { uri } from '@/config'
 
 export default {
   name: "SupplierList",
@@ -75,7 +75,7 @@ export default {
     supplierMixin
   ],
   created() {
-    this.getApiSuppliers("http://localhost:8000/api/supplier")
+    this.getApiSuppliers(`${uri}/supplier`)
   },
 };
 </script>

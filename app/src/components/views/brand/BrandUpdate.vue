@@ -43,6 +43,7 @@
 
 <script>
 import brandMixin from '@/mixins/brands'
+import { uri } from '@/config'
 
 export default {
     name: 'BrandUpdate',
@@ -51,7 +52,7 @@ export default {
       brandMixin
     ],
     created() {
-      this.getApiBrands(`http://localhost:8000/api/brand/${this.id}`)
+      this.getApiBrands(`${uri}/brand/${this.id}`)
     }
 }
 </script>

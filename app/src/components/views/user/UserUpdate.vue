@@ -1,39 +1,48 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">Editar Usuário: {{ users.id }}</h5>
+        <h5 class="card-title">Editar Usuário: {{ id }}</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+          <label for="name" class="col-sm-2 col-form-label">Nome</label>
           <div class="col-sm-10">
             <input
+              v-model="getUsers.name"
               type="text"
               class="form-control"
-              id="staticName"
-              :value="users.name"
-              placeholder="João da Silva"
+              :class="error.name ? 'is-invalid' : ''"
+              id="name"
+              placeholder="Nome do Usuário"
             />
+            <div v-if="error.name" v-text="error.name[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
             <input
+              v-model="getUsers.email"
               type="text"
               class="form-control"
-              id="staticEmail"
-              :value="users.email"
+              :class="error.email ? 'is-invalid' : ''"
+              id="email"
               placeholder="email@exemplo.com.br"
             />
+            <div v-if="error.email" v-text="error.email[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="inputPassword" class="col-sm-2 col-form-label"
+          <label for="password" class="col-sm-2 col-form-label"
             >Senha</label
           >
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Senha Forte" />
+            <input 
+              type="password" 
+              class="form-control" 
+              :class="error.password ? 'is-invalid' : ''"
+              id="password" 
+              placeholder="Senha Forte" />
+            <div v-if="error.password" v-text="error.password[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">
@@ -45,13 +54,14 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button 
+              @click="update(id)"
+              class="form-control btn btn-primary">
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -59,16 +69,27 @@
 
 <script>
 import userMixin from '@/mixins/users'
+import { uri } from '@/config'
 
 export default {
   name: "UserUpdate",
+  props: {
+    id: [String, Number]
+  },
   mixins: [
     userMixin
   ],
   created() {
-    this.getUser(`http://localhost:8000/api/user/${this.$route.params.id}`)
+    this.getApiUsers(`${uri}/user/${this.id}`)
+  },
+  beforeUnmount() {
+    const error = {
+            name: null,
+            email: null,
+            password: null,
+            confirm_password: null
+        }
+    this.setErrors(error)
   }
 };
 </script>
-
-<style></style>
