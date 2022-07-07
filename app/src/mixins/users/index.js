@@ -16,7 +16,6 @@ export default {
   computed: {
     ...mapState('userStore', {
       error: 'error',
-      validate: 'validate'
     }),
     ...mapGetters('userStore', {
       getUsers: 'getUsers'

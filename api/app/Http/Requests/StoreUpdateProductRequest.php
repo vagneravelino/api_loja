@@ -27,7 +27,7 @@ class StoreUpdateProductRequest extends FormRequest
 
         return [
             'name' => 'required|min:10|max:180',
-            'description' => 'max:2000',
+            'description' => 'required|max:2000',
             'brand_id' => 'required|exists:brands,id',
             'supplier_id' => 'required|exists:suppliers,id',
             'features' => 'required|max:2000',

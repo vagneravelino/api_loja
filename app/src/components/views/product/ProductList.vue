@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Lista de Produto</h5>
         <div class="row justify-content-end">
@@ -29,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="p in products" :key="p.id">
+            <tr v-for="p in getProducts" :key="p.id">
               <td>{{ p.name }}</td>
               <td>{{ p.brand.name }}</td>
               <td>{{ p.supplier.name }}</td>
@@ -37,7 +36,7 @@
               <td>
                 <button
                   class="btn btn-sm btn-outline-warning me-2"
-                  @click="this.$router.push({ name: 'ProductDetail', params: { id: p.id } })"
+                  @click="this.$router.push({ name: 'ProductDetail', params: { id: p.id }, props: { id: p.id} })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Informação do Produto"
@@ -51,7 +50,7 @@
                 </button>
                 <button
                   class="btn btn-sm btn-outline-success me-2"
-                  @click="this.$router.push({ name: 'ProductUpdate', params: { id: p.id } })"
+                  @click="this.$router.push({ name: 'ProductUpdate', params: { id: p.id }, props: { id: p.id } })"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Editar Produto"
@@ -73,15 +72,14 @@
 </template>
 
 <script>
-import productMixin from "@/mixins/products";
+import productMixin from "@/mixins/products"
+import { uri } from '@/config'
 
 export default {
   name: "ProductList",
   mixins: [productMixin],
   created() {
-    this.getProduct("http://localhost:8000/api/product");
+    this.getApiProducts(`${uri}/product`)
   },
 };
 </script>
-
-<style></style>

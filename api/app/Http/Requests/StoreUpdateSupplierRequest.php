@@ -24,7 +24,7 @@ class StoreUpdateSupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:100'
+            'name' => 'required|min:2|max:100'
         ];
     }
 }

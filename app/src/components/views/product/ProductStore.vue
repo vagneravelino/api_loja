@@ -1,96 +1,113 @@
 <template>
   <div class="container">
     <div class="card mt-3">
-      <!-- <img src="../../assets/images/usuarios.jpg" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <h5 class="card-title">Cadastro de Produto</h5>
         <div class="mb-3 row">
-          <label for="staticName" class="col-sm-2 col-form-label">
+          <label for="name" class="col-sm-2 col-form-label">
             Nome
             <span class="text-danger"> *</span>
           </label>
           <div class="col-sm-10">
             <input
+              v-model="form.name"
               type="text"
               class="form-control"
-              id="staticName"
-              placeholder="Geladeira"
+              :class="error.name ? 'is-invalid' : ''"
+              id="name"
+              placeholder="Nome do Produto"
             />
+            <div v-if="error.name" v-text="error.name[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticDescription" class="col-sm-2 col-form-label"
+          <label for="description" class="col-sm-2 col-form-label"
             >Descrição
             <span class="text-danger"> *</span>
           </label
           >
           <div class="col-sm-10">
             <textarea
+              v-model="form.description"
               class="form-control"
-              id="staticDescription"
-              placeholder="Design arrojado"
+              :class="error.description ? 'is-invalid' : ''"
+              id="description"
+              placeholder="Insira uma descrição para o produto."
             ></textarea>
+            <div v-if="error.description" v-text="error.description[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticBrand" class="col-sm-2 col-form-label">
+          <label for="brand_id" class="col-sm-2 col-form-label">
             Marca
             <span class="text-danger"> *</span>
           </label>
           <div class="col-sm-4">
             <select
-              id="staticBrand"
+              id="brand_id"
               class="form-select"
+              :class="error.brand_id ? 'is-invalid' : ''"
+              v-model="form.brand_id"
             >
-              <option selected>Selecione uma Marca</option>
-              <template v-if="brands">
-                <option v-for="m in brands.data" :value="m.id" :key="m.id">{{ m.name }}</option>
+              <option :value="form.brand_id" selected>Selecione uma Marca</option>
+              <template v-if="getBrands">
+                <option v-for="m in getBrands" :value="m.id" :key="m.id">{{ m.name }}</option>
               </template>
             </select>
+            <div v-if="error.brand_id" v-text="error.brand_id[0]" class="invalid-feedback"></div>
           </div>
-          <label for="staticSupplier" class="col-sm-2 col-form-label"
+          <label for="supplier_id" class="col-sm-2 col-form-label"
             >Fabricante
             <span class="text-danger"> *</span>
           </label
           >
           <div class="col-sm-4">
             <select
-              id="staticSupplier"
+              id="supplier_id"
               class="form-select"
+              :class="error.supplier_id ? 'is-invalid' : ''"
+              v-model="form.supplier_id"
             >
-              <option selected>Selecione um Fornecedor</option>
-              <template v-if="suppliers">
-                <option v-for="s in suppliers.data" :value="s.id" :key="s.id">{{ s.name }}</option>
+              <option :value="form.supplier_id" selected>Selecione um Fornecedor</option>
+              <template v-if="getSuppliers">
+                <option v-for="s in getSuppliers" :value="s.id" :key="s.id">{{ s.name }}</option>
               </template>
             </select>
+            <div v-if="error.supplier_id" v-text="error.supplier_id[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticFeatures" class="col-sm-2 col-form-label"
+          <label for="features" class="col-sm-2 col-form-label"
             >Características
             <span class="text-danger"> *</span>
           </label
           >
           <div class="col-sm-10">
             <textarea
+              v-model="form.features"
               class="form-control"
-              id="staticFeatures"
-              placeholder="Tensão: 220V"
+              :class="error.features ? 'is-invalid' : ''"
+              id="features"
+              placeholder="Insira as características do produto."
             ></textarea>
+            <div v-if="error.features" v-text="error.features[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="staticPrice" class="col-sm-2 col-form-label">
+          <label for="price" class="col-sm-2 col-form-label">
             Preço (R$)
             <span class="text-danger"> *</span>
           </label>
           <div class="col-sm-10">
             <input
+              v-model="form.price"
               type="text"
               class="form-control"
-              id="staticPrice"
-              placeholder="2.500,00"
+              :class="error.price ? 'is-invalid' : ''"
+              id="price"
+              placeholder="Digite o valor do produto."
             />
+            <div v-if="error.price" v-text="error.price[0]" class="invalid-feedback"></div>
           </div>
         </div>
         <div class="row justify-content-between">
@@ -102,7 +119,9 @@
             </button>
           </div>
           <div class="col-sm-2">
-            <button class="form-control btn btn-primary">
+            <button 
+              @click="storeProduct()"
+              class="form-control btn btn-primary">
               <i class="bi bi-cloud-download"></i>
               Salvar
             </button>
@@ -114,34 +133,32 @@
 </template>
 
 <script>
+import productMixin from '@/mixins/products'
+import brandMixin from "@/mixins/brands";
+import supplierMixin from "@/mixins/suppliers";
+import { uri } from '@/config'
+
 export default {
   name: "ProductStore",
-  data: () => ({
-    data: null,
-    brands: null,
-    suppliers: null
-  }),
-  methods: {
-    listarFornecedores() {
-      fetch('http://localhost:8000/api/supplier')
-        .then(responseServer => responseServer.json())
-        .then(response => {
-          this.suppliers = response
-        })
-    },
-    listarMarcas() {
-      fetch('http://localhost:8000/api/brand')
-        .then(responseServer => responseServer.json())
-        .then(response => {
-          this.brands = response
-        })
-    }
-  },
+  mixins: [
+    productMixin,
+    brandMixin,
+    supplierMixin
+  ],
   created() {
-    this.listarFornecedores()
-    this.listarMarcas()
+    this.getApiBrands(`${uri}/brand`);
+    this.getApiSuppliers(`${uri}/supplier`);
+  },
+  beforeUnmount() {
+    const error = {
+            name: null,
+            description: null,
+            brand_id: '',
+            supplier_id: '',
+            features: null,
+            price: null
+        }
+    this.setErrors(error)
   }
 };
 </script>
-
-<style></style>

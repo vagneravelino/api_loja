@@ -26,9 +26,9 @@ class StoreUpdateUserRequest extends FormRequest
         $id = $this->segment(3);
 
         return [
-            'name' => 'required|min:3|max:100',
-            'email' => "required|email|min:3|max:180|unique:users,email,{$id},id",
-            'password' => 'requiredOnCreate|min:6|max:20'
+            'name' => 'required|min:2|max:100',
+            'email' => "required|email|min:10|max:180|unique:users,email,{$id},id",
+            'password' => 'requiredOnCreate|min:8|max:20'
         ];
     }
 }
