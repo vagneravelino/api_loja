@@ -43,7 +43,7 @@
             </select>
           </div>
           <label for="supplier_id" class="col-sm-2 col-form-label"
-            >Fabricante</label
+            >Fornecedor</label
           >
           <div class="col-sm-4">
             <select id="supplier_id" v-model="getProducts.supplier_id" class="form-select" disabled>

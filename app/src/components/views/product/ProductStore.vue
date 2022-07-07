@@ -10,7 +10,7 @@
           </label>
           <div class="col-sm-10">
             <input
-              v-model="form.name"
+              v-model="form_product.name"
               type="text"
               class="form-control"
               :class="error.name ? 'is-invalid' : ''"
@@ -28,7 +28,7 @@
           >
           <div class="col-sm-10">
             <textarea
-              v-model="form.description"
+              v-model="form_product.description"
               class="form-control"
               :class="error.description ? 'is-invalid' : ''"
               id="description"
@@ -47,17 +47,17 @@
               id="brand_id"
               class="form-select"
               :class="error.brand_id ? 'is-invalid' : ''"
-              v-model="form.brand_id"
+              v-model="form_product.brand_id"
             >
-              <option :value="form.brand_id" selected>Selecione uma Marca</option>
+              <option value="">Selecione uma Marca</option>
               <template v-if="getBrands">
-                <option v-for="m in getBrands" :value="m.id" :key="m.id">{{ m.name }}</option>
+                <option v-for="b in getBrands" :value="b.id" :key="b.id">{{ b.name }}</option>
               </template>
             </select>
             <div v-if="error.brand_id" v-text="error.brand_id[0]" class="invalid-feedback"></div>
           </div>
           <label for="supplier_id" class="col-sm-2 col-form-label"
-            >Fabricante
+            >Fornecedor
             <span class="text-danger"> *</span>
           </label
           >
@@ -66,9 +66,9 @@
               id="supplier_id"
               class="form-select"
               :class="error.supplier_id ? 'is-invalid' : ''"
-              v-model="form.supplier_id"
+              v-model="form_product.supplier_id"
             >
-              <option :value="form.supplier_id" selected>Selecione um Fornecedor</option>
+              <option value="">Selecione um Fornecedor</option>
               <template v-if="getSuppliers">
                 <option v-for="s in getSuppliers" :value="s.id" :key="s.id">{{ s.name }}</option>
               </template>
@@ -84,7 +84,7 @@
           >
           <div class="col-sm-10">
             <textarea
-              v-model="form.features"
+              v-model="form_product.features"
               class="form-control"
               :class="error.features ? 'is-invalid' : ''"
               id="features"
@@ -100,7 +100,7 @@
           </label>
           <div class="col-sm-10">
             <input
-              v-model="form.price"
+              v-model="form_product.price"
               type="text"
               class="form-control"
               :class="error.price ? 'is-invalid' : ''"
@@ -151,12 +151,12 @@ export default {
   },
   beforeUnmount() {
     const error = {
-            name: null,
-            description: null,
+            name: '',
+            description: '',
             brand_id: '',
             supplier_id: '',
-            features: null,
-            price: null
+            features: '',
+            price: ''
         }
     this.setErrors(error)
   }

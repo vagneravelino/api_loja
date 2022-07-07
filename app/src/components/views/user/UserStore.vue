@@ -3,7 +3,6 @@
     <div class="card mt-3">
       <div class="card-body">
         <h5 class="card-title">Cadastro de Usuário</h5>
-        {{ error }}
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">
             Nome

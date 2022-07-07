@@ -26,7 +26,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="u in getUsers" :key="u.id">
+            <tr v-for="u, in getUsers" :key="u.id">
               <td>{{ u.name }}</td>
               <td>{{ u.email }}</td>
               <td>

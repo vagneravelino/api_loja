@@ -52,7 +52,7 @@
             <div v-if="error.brand_id" v-text="error.brand_id[0]" class="invalid-feedback"></div>
           </div>
           <label for="supplier_id" class="col-sm-2 col-form-label"
-            >Fabricante
+            >Fornecedor
             <span class="text-danger"> *</span>
           </label
           >

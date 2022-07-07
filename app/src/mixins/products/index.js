@@ -6,13 +6,13 @@ import { configAlert } from '@/config/alert'
 
 export default {
   data: () => ({
-    form: {
-      name: null,
-      description: null,
+    form_product: {
+      name: '',
+      description: '',
       brand_id: '',
       supplier_id: '',
-      features: null,
-      price: null
+      features: '',
+      price: ''
     },
   }),
   computed: {
@@ -39,7 +39,7 @@ export default {
 
     storeProduct() {
       const notifier = new AWN(configAlert)
-      const data = JSON.stringify(this.form)
+      const data = JSON.stringify(this.form_product)
 
       notifier.asyncBlock(
         axios.post(`${uri}/product`, data, { headers: header }),
